@@ -26,7 +26,7 @@ from pathlib import Path
 from app.comercial import forecast, ingesta
 from app.config import get_settings
 from app.db.mongo import init_database
-from tests import m5_fixture
+from pipeline import fixture_sintetico as m5_fixture
 
 
 def main(argv: list[str] | None = None) -> int:

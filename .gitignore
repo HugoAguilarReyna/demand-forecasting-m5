@@ -37,3 +37,8 @@ desktop.ini
 tmp/
 salida/
 _respaldo_*/
+
+# Datos y artefactos generados por el pipeline instalable
+data/
+lib/data/
+research/smoke.json

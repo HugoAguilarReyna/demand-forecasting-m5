@@ -18,17 +18,17 @@ No se incluyen identificadores de clientes: M5 no contiene datos personales.
 
 ## Estado de ejecución
 
-El pipeline está escrito para el backend del portafolio y **no se ejecuta con solo
-clonar el repositorio**. Requiere:
+El pipeline incluye su configuración y adaptador local. Después de `pip install -e .`,
+la ejecución sintética en memoria funciona sin datos externos ni MongoDB.
+La ejecución completa sobre M5 requiere:
 
-1. **Los CSV de M5** descargados e importados con `pipeline/importar_m5.py`.
+1. **Los CSV de M5** descargados e importados con `python -m pipeline.importar_m5`.
 2. **Una instancia de MongoDB** accesible; las colecciones de destino son
    `M5_EVALUACION`, `M5_PRONOSTICOS` y `M5_AGREGADOS`.
-3. **Linux o macOS**: el paquete `comercial` importa `resource` para medir memoria
-   del proceso, y ese módulo no existe en Windows.
+3. **Python 3.11+**: el motor funciona también en Windows; la medición opcional de memoria con `resource` se omite si no está disponible.
 
-Lo que sí se verifica en cada *push*: que los módulos compilen, que las etapas
-existan, que el horizonte sea 28 y que no haya rutas absolutas ni credenciales.
+CI verifica los contratos estáticos y entrena el motor real con un conjunto sintético.
+El informe conserva la configuración y las métricas; no reproduce las cifras M5.
 
 Esta honestidad es deliberada: un repositorio que promete ejecutarse y falla al
 primer `pip install` cuesta más que uno que declara sus requisitos.

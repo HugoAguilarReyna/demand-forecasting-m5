@@ -47,7 +47,19 @@ jobs:
       - name: Instalar dependencias de desarrollo
         run: |
           python -m pip install --upgrade pip
-          python -m pip install -r requirements-dev.txt
+          python -m pip install -r requirements-smoke.txt
+
+      - name: Instalar el pipeline desde este clon
+        run: python -m pip install -e .
+
+      - name: Entrenar y evaluar el motor con datos sintéticos
+        run: python -m pipeline.verificar_modelo --salida research/smoke.json
+
+      - name: Conservar el informe de ejecución
+        uses: actions/upload-artifact@v4
+        with:
+          name: m5-smoke-sintetico
+          path: research/smoke.json
 
       - name: Ejecutar pruebas
         run: python -m pytest -q

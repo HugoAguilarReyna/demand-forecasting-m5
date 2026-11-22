@@ -1,3 +1,18 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hugo-m5-forecasting"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = ["lightgbm>=4.5", "numpy>=2.0", "pymongo>=4.10", "pydantic-settings>=2.0"]
+
+[tool.setuptools.packages.find]
+where = ["lib", "."]
+include = ["app*", "pipeline*"]
+namespaces = false
+
 [tool.pytest.ini_options]
+pythonpath = ["lib", "."]
 testpaths = ["tests"]
-addopts = "-q"
