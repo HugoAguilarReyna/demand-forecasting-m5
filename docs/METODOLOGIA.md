@@ -37,8 +37,10 @@ El entrenamiento separa dos fases, y esa separación es el núcleo del método:
 
 1. **Desarrollo (`--variantes`)** — se entrenan las variantes candidatas sobre
    *cortes de desarrollo* y se comparan **por WAPE**.
-2. **Final** — el modelo elegido se evalúa en los cortes **reservados**, que no
-   participaron en la selección, y genera el pronóstico.
+2. **Final** — se evalúa el modelo elegido en cortes posteriores y se genera el
+   pronóstico. Según la ficha publicada, esos cortes se consultaron para confirmar
+   la publicación: no constituyen un holdout intacto. Para una evaluación nueva
+   hay que reservar otro periodo o conjunto antes de tomar decisiones.
 
 Métricas reportadas por horizonte y agregadas:
 

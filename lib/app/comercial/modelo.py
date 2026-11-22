@@ -44,6 +44,7 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
 import time
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
@@ -78,7 +79,7 @@ VARIANTES = {
     },
 }
 
-ARTEFACTOS = Path(__file__).resolve().parents[2] / "data" / "artefactos"
+ARTEFACTOS = Path(os.environ.get("COMERCIAL_ARTIFACT_DIR", str(Path.cwd() / "data" / "artefactos")))
 
 #: Cortes reservados: los dos últimos no participan en la selección del modelo.
 ORIGENES_DESARROLLO = (1773, 1801, 1829, 1857)

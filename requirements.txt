@@ -1,5 +1,5 @@
 # Dependencias del pipeline de pronóstico M5.
-# Requiere Linux o macOS: el paquete `comercial` usa `resource` para medir memoria.
+# Python 3.11+; la medición opcional resource se omite cuando no está disponible.
 lightgbm>=4.5
 numpy>=2.0
 pandas>=2.2
